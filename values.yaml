@@ -1,7 +1,7 @@
 replicaCount: 3
 image:
   repository: "ikambarov/web-app"
-  tag: "1.0.0"
+  tag: "1.0.1"
 resources:
   memoryRequest: "50Mi"
   cpuRequest: "100m"
