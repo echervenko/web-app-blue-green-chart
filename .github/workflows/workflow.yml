@@ -15,13 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: setup kubectl
-        uses: justin0u0/setup-kubectl@v1
+      - name: Setup KUBECONFIG
+        uses: vbem/kubeconfig4sa@v1
         with:
-          kubectl-version: stable
-          cluster-certificate-authority-data: ${{ secrets.K8S_CA_BASE64 }}
-          cluster-server: ${{ secrets.KUBEAPI_SERVER }}
-          credentials-token: ${{ secrets.K8S_SA_TOKEN }}
+          server:    ${{ secrets.KUBEAPI_SERVER }}
+          ca-base64:  ${{ secrets.K8S_CA_BASE64 }}
+          token:      ${{ secrets.K8S_SA_TOKEN }}
+          namespace:  default
 
       - name: Helm Install
         run: helm upgrade --install myapp . 
